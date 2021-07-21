@@ -28,4 +28,6 @@ As each Node is connected to three branches so write 3 in the Node fields
 the branch fields would automaticly appear so write what does each branch got in the special format so
 the code would parse that!
 for example R20,B20 means that in this branch we got 20 ohm resistor and 20 volt battery then by clicking next step you get the answer!
+![exm](https://user-images.githubusercontent.com/53050138/126566059-9cb1b268-222a-48bb-a8a0-79f59dfc027a.png)
+
 Open the "OPEN ME" folder there i attach a pdf of this example
