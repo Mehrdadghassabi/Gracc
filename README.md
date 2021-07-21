@@ -1,4 +1,4 @@
-"#graphical approach to solve an ElectricalCircuit" 
+"#graph theory approach to solve an ElectricalCircuit" 
 Algorithm design:
 This project solve an electrical circuit
 using graph theory approach
