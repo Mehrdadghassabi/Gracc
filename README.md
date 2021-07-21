@@ -1,6 +1,7 @@
-"# ElectricalCircuit" 
-This project simulate an electrical circuit
-and solving it with graph theory approach
+"#graphical approach to solve an ElectricalCircuit" 
+Algorithm design:
+This project solve an electrical circuit
+using graph theory approach
 you can watch this youtube lecture to get known with this
 special approach to solve electrical circuit (https://www.youtube.com/watch?v=F8qiM3o0Jc0)
 
