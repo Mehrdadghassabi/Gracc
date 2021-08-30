@@ -1,22 +1,22 @@
-"#graph theory approach to solve an ElectricalCircuit" 
-Algorithm design:
-This project solve an electrical circuit
-using graph theory approach
-you can watch this youtube lecture to get known with this
-special approach to solve electrical circuit (https://www.youtube.com/watch?v=F8qiM3o0Jc0)
+# graph theory approach to solve an ElectricalCircuit
+Algorithm design: <br />
+This project solve an electrical circuit <br />
+using graph theory approach <br />
+you can watch this youtube lecture to get known with this <br />
+special approach to solve electrical circuit (https://www.youtube.com/watch?v=F8qiM3o0Jc0) <br />
 
-its simple gui implemented with JavaFX using EventHandler for background threads
-the gui needs to be developed in next phases
+its simple gui implemented with JavaFX using EventHandler for background threads <br />
+the gui needs to be developed in next phases <br />
 
-there is three packages in this project
-1.ElectricalCircuit:
+there is three packages in this project <br />
+# ElectricalCircuit:
 in this approach we should assume the electrical circuit as gates
 I implemented battery and resistor but the capacitors and ... would be added in the next phases
-2.Graph:
+# Graph:
 as this project solve an electrical circuit with a graph this package created to create
 special kind of graph data structure based on Nodes and branches
 as we use kirchhoff rules and N equation N unknown there is an equation class too
-3:Electrical Circuit:
+# Electrical Circuit:
 exept the Matrix class this package is about the gui and background task in the ElectricalCircuit.java
 there is mesal() function that run the app on the console if you call it in the main function
 
