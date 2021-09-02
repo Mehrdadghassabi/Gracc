@@ -11,7 +11,6 @@ special approach to solve electrical circuit (https://www.youtube.com/watch?v=F8
 its simple gui implemented with JavaFX using EventHandler for background threads <br />
 the gui needs to be developed in next phases <br />
 
-there is three packages in this project <br />
 # ElectricalCircuit:
 in this approach we should assume the electrical circuit as gates
 I implemented battery and resistor but the capacitors and ... would be added in the next phases
