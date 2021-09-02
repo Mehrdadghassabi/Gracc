@@ -1,8 +1,11 @@
-# graph theory approach to solve an ElectricalCircuit
+# graph theory approach solving ElectricalCircuit (Gracc)
+
 Algorithm design: <br />
-This project solve an electrical circuit <br />
-using graph theory approach <br />
-you can watch this youtube lecture to get known with this <br />
+The application of using Graph theory is a New algorithm to solve <br />
+electrical circuit modeling Circuits As a graph <br />
+Combining abstract mathmatics linear Algebra and physics <br />
+
+please watch this youtube lecture to get known with this <br />
 special approach to solve electrical circuit (https://www.youtube.com/watch?v=F8qiM3o0Jc0) <br />
 
 its simple gui implemented with JavaFX using EventHandler for background threads <br />
