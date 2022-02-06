@@ -1,4 +1,4 @@
-# graph theory approach solving ElectricalCircuit (Gracc)
+# Graph theory approach solving ElectricalCircuit (Gracc)
 
 Algorithm design: <br />
 The application of using Graph theory is a New algorithm to solve <br />
