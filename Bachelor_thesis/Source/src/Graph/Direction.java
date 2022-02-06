@@ -11,15 +11,39 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
-
-package Myutil;
+package Graph;
 
 /**
  *
  * @author Mehrdad Ghassabi
  */
-public class MatrixException extends Exception {
-   public MatrixException(String s){
-   super(s);
-   }
+public class Direction {
+    private final Branch branch;
+    private boolean IsReverse;
+    
+      Direction(Branch branch, boolean IsReverse){
+    this.IsReverse=IsReverse;
+    this.branch=branch;
+    }
+
+      public Branch getBranch() {
+        return branch;
+    }
+    
+      public boolean getIsReverse() {
+        return IsReverse;
+    }
+
+      public void SetIsReverse(boolean IsReverse){
+      this.IsReverse=IsReverse;
+      }
+      
+    @Override
+      public String toString(){
+      StringBuilder sb=new StringBuilder();
+      sb.append(this.branch);
+      String rev=(this.IsReverse)?"  .R.  ":"  .N.  ";
+      sb.append(rev);
+      return sb.toString();
+      }
 }

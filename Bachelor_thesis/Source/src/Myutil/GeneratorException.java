@@ -18,8 +18,9 @@ package Myutil;
  *
  * @author Mehrdad Ghassabi
  */
-public class MatrixException extends Exception {
-   public MatrixException(String s){
-   super(s);
-   }
+
+public class GeneratorException extends Exception {
+    public GeneratorException(String s){
+        super(s);
+    }
 }

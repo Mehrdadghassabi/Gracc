@@ -18,8 +18,8 @@ package Myutil;
  *
  * @author Mehrdad Ghassabi
  */
-public class MatrixException extends Exception {
-   public MatrixException(String s){
-   super(s);
-   }
+public class SingletonException extends Exception {
+    public SingletonException(String s){
+        super(s);
+    }
 }

@@ -1,8 +1,8 @@
-package electricalcircuit;
+package Myutil;
 
 /**
  *
- * @author Dour-Andish
+ * @author Mehrdad Ghassabi
  */
 public class Matrix{
      

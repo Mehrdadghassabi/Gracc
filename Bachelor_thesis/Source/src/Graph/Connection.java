@@ -12,14 +12,34 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
-package Myutil;
+package Graph;
 
 /**
  *
- * @author Mehrdad Ghassabi
+ * @author Mehrdad ghassabi
  */
-public class MatrixException extends Exception {
-   public MatrixException(String s){
-   super(s);
-   }
+public class Connection {
+   private  Branch branch;
+    private  boolean IsDes;
+
+    public Connection(Branch branch, boolean IsDes){
+    this.IsDes=IsDes;
+    this.branch=branch;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+    
+    public void setBanch(Branch b){
+    this.branch=b;
+    }
+    
+    public boolean getIsDes() {
+        return IsDes;
+    }
+
+    public void setIsDes(boolean IsDes) {
+        this.IsDes = IsDes;
+    }
 }

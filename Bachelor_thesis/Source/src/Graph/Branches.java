@@ -1,8 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Copyleft (ALL WRONG ARE RESERVED) 2019  Mehrdad Ghassabi <mehrdad.gv@gmail.com>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>
+*/
+
 package Graph;
 
 import ElectricalGate.Battery;
@@ -10,19 +19,19 @@ import ElectricalGate.ElectricalGate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Myutil.SingletonException;
+import Myutil.GeneratorException;
 
 /**
  *
- * @author Dour-Andish
+ * @author Mehrdad Ghassabi
  */
 public final class Branches {
     private final Graph graph;
     private final Branch[] blocks;
     Map<Integer,Byte> counter1=new HashMap<>();
     boolean CallForsecond=false;
-    public  ArrayList<ArrayList<BranchDirection>> Loops=new ArrayList<>();
+    public  ArrayList<ArrayList<Direction>> Loops=new ArrayList<>();
     int con=0;
     boolean InstantiatingTwice=false;
     
@@ -35,8 +44,8 @@ public final class Branches {
  
     }
     
-    public ArrayList<ArrayList<BranchDirection>> getLoop() throws GeneratorException, SingletonException{
-        ArrayList<ArrayList<BranchDirection>> loop=new ArrayList<>();
+    public ArrayList<ArrayList<Direction>> getLoop() throws GeneratorException, SingletonException{
+        ArrayList<ArrayList<Direction>> loop=new ArrayList<>();
      for(int i=0;i<this.graph.getUnknowns()-this.graph.getNodesamount()+1;i++){
     
             loop.add(getLoopNumberN(i));
@@ -50,8 +59,8 @@ public final class Branches {
     Node[][] desoriNodes=getbranchNodes(g);
     for(int i=0;i<reblocks.length;i++){
     reblocks[i]=new Branch(desoriNodes[0][i],desoriNodes[1][i],in.get(i));
-    desoriNodes[0][i].AddConnectedBranch(new Nodesbranch(reblocks[i],true));
-    desoriNodes[1][i].AddConnectedBranch(new Nodesbranch(reblocks[i],false));
+    desoriNodes[0][i].AddConnectedBranch(new Connection(reblocks[i],true));
+    desoriNodes[1][i].AddConnectedBranch(new Connection(reblocks[i],false));
     reblocks[i].setBranchNum(i);
     }
     return reblocks;
@@ -81,22 +90,22 @@ public final class Branches {
         return blocks;
     }
     
-    public ArrayList<BranchDirection> getBranchByNode(int origin,int destination){
-        ArrayList<BranchDirection> arr=new ArrayList<>();
+    public ArrayList<Direction> getBranchByNode(int origin, int destination){
+        ArrayList<Direction> arr=new ArrayList<>();
     for(Branch block:this.blocks){
         if(block.IsRightBranch(origin,destination)){
-            arr.add(new BranchDirection(block,false));
+            arr.add(new Direction(block,false));
         } /////////block.getOrigin(),block.getDestination(),block.getBlocks())
     }
     return arr; 
     }
     
-    public ArrayList<BranchDirection> getLoopNumberN(int x) throws GeneratorException, SingletonException{
+    public ArrayList<Direction> getLoopNumberN(int x) throws GeneratorException, SingletonException{
                 if(con==3)
                        throw new SingletonException("cant instanciate");
      
     int[] nums=this.graph.getWholeLoops().get(x);
-    ArrayList<BranchDirection> re=new ArrayList<>();
+    ArrayList<Direction> re=new ArrayList<>();
     int First;
     int Last;
     Map<Integer,Byte> counter=new HashMap<>();
@@ -118,7 +127,7 @@ public final class Branches {
      
        // System.out.println(in);
         
-     BranchDirection bran=getBranchByNode(First, Last).get(in);
+     Direction bran=getBranchByNode(First, Last).get(in);
      bran.SetIsReverse(First-Last>0);
      re.add(bran);
     }
@@ -127,7 +136,7 @@ public final class Branches {
     return re;
    }
     
-    public BranchDirection getBranchXmorethan2(int first,int last){
+    public Direction getBranchXmorethan2(int first, int last){
      byte hold=(counter1.get(JoinTwonum(first,last))==null)?0:
              ((byte)(counter1.get(JoinTwonum(first,last))+1));
      if(this.CallForsecond)
@@ -139,7 +148,7 @@ public final class Branches {
        // System.out.println(in);
         
         
-    BranchDirection bran=getBranchByNode(first, last).get(in);
+    Direction bran=getBranchByNode(first, last).get(in);
     bran.SetIsReverse(first-last>0);
     this.CallForsecond=false;
     return bran;
@@ -150,11 +159,11 @@ public final class Branches {
     }
     
     public float findVoltageofLoopN(int n) throws GeneratorException{
-    ArrayList<BranchDirection> myarr=this.Loops.get(n);
+    ArrayList<Direction> myarr=this.Loops.get(n);
     ArrayList<Battery> batterys;
     int rev;
     float counter=0;
-     for(BranchDirection branchDir:myarr){
+     for(Direction branchDir:myarr){
          rev=branchDir.getIsReverse()?(-1):1;
           batterys= branchDir.getBranch().getBatterys();
           
@@ -178,7 +187,7 @@ public final class Branches {
     return sb.toString();
     }
 
-    public ArrayList<ArrayList<BranchDirection>> getLoops() {
+    public ArrayList<ArrayList<Direction>> getLoops() {
         return Loops;
     }
 }

@@ -1,23 +1,37 @@
+/*
+Copyleft (ALL WRONG ARE RESERVED) 2019  Mehrdad Ghassabi <mehrdad.gv@gmail.com>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>
+*/
+
 package GraCc;
 
 import ElectricalGate.ElectricalGate;
-import Graph.GeneratorException;
+import Myutil.GeneratorException;
 import Graph.Graph;
 import Graph.Node;
-import Graph.SingletonException;
+import Myutil.SingletonException;
 import Graph.Branches;
 import ElectricalGate.Battery;
 import ElectricalGate.Resistor;
-import Graph.Equations;
+import Myutil.Solver;
+import Myutil.StringSeperator;
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) throws GeneratorException, SingletonException {
-
         mesal();
-
     }
+
     private static void mesal() throws GeneratorException, SingletonException {
         Node a=new Node();
         Node b=new Node();
@@ -96,7 +110,7 @@ public class Main {
         in.add(b6);
 
         Branches circuit=new Branches(g,in);
-        Equations eq=new Equations(circuit);
+        Solver eq=new Solver(circuit);
         System.out.println(eq.getPassives());
     }
 
@@ -130,7 +144,7 @@ public class Main {
         // b2.add(r1b2);
         // Battery Bb2=new Battery(20f,false);
         //b2.add(Bb2);
-        electricalcircuit.StringSeperator s2=new electricalcircuit.StringSeperator("R20,B20");
+        StringSeperator s2=new StringSeperator("R20,B20");
         ArrayList<ElectricalGate> b2=s2.getBranch();
 
 
@@ -146,7 +160,7 @@ public class Main {
 
         Branches circuit=new Branches(g,in);
 
-        Equations eq=new Equations(circuit);
+        Solver eq=new Solver(circuit);
         System.out.println(eq.getPassives());
     }
 }
