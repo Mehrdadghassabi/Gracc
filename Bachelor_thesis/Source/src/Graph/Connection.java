@@ -20,10 +20,10 @@ package Graph;
  */
 public class Connection {
    private  Branch branch;
-    private  boolean IsDes;
+   private  boolean Is_Destination;
 
     public Connection(Branch branch, boolean IsDes){
-    this.IsDes=IsDes;
+    this.Is_Destination=IsDes;
     this.branch=branch;
     }
 
@@ -36,10 +36,10 @@ public class Connection {
     }
     
     public boolean getIsDes() {
-        return IsDes;
+        return Is_Destination;
     }
 
     public void setIsDes(boolean IsDes) {
-        this.IsDes = IsDes;
+        this.Is_Destination = IsDes;
     }
 }

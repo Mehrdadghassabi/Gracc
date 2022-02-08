@@ -28,8 +28,7 @@ public class Branch {
     private final Node destination;
     private final ArrayList<ElectricalGate> blocks;
     private int branchNum;
-    int con=0;
-    
+
     public Branch(Node origin,Node destination,ArrayList<ElectricalGate> blocks){
     this.destination=destination;
     this.origin=origin;

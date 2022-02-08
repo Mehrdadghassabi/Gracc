@@ -19,7 +19,7 @@ import Myutil.GeneratorException;
 import Graph.Graph;
 import Graph.Node;
 import Myutil.SingletonException;
-import Graph.Branches;
+import Graph.Gracc;
 import ElectricalGate.Battery;
 import ElectricalGate.Resistor;
 import Myutil.Solver;
@@ -109,7 +109,7 @@ public class Main {
         in.add(b5);
         in.add(b6);
 
-        Branches circuit=new Branches(g,in);
+        Gracc circuit=new Gracc(g,in);
         Solver eq=new Solver(circuit);
         System.out.println(eq.getPassives());
     }
@@ -158,7 +158,7 @@ public class Main {
         in.add(b2);
         in.add(b3);
 
-        Branches circuit=new Branches(g,in);
+        Gracc circuit=new Gracc(g,in);
 
         Solver eq=new Solver(circuit);
         System.out.println(eq.getPassives());

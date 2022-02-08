@@ -11,6 +11,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
+
 package Graph;
 
 import java.util.ArrayList;
@@ -26,9 +27,8 @@ import Myutil.GeneratorException;
  * @author Mehrdad Ghassabi
  */
 public class Graph {
-   private final int NodesAmount;
+   private final int Nodes_Number;
    private final ArrayList<Node> Nodes;
-   private int UnKnowns;
    
    public Graph(ArrayList<Node> Nodes){
    this.Nodes=Nodes;
@@ -36,12 +36,12 @@ public class Graph {
    {
    this.Nodes.get(i).SetNumber(i);
    }     
-   this.NodesAmount=Nodes.size();
+   this.Nodes_Number=Nodes.size();
    }
    
    public Graph(int size){
    this.Nodes=new ArrayList<>();
-   this.NodesAmount=size;
+   this.Nodes_Number=size;
    }
    
    public void AddNode(Node node){
@@ -52,44 +52,44 @@ public class Graph {
    return this.Nodes;
    }
    
-   public int getUnknowns(){
+   public int Get_Unknown_Number(){
        int counter=0;
        
        counter = Nodes.stream().map((node) -> node.getConnectedNodesSize()).reduce(counter, Integer::sum);
        return counter/2;
    }
    
-   public ArrayList<int[]> getNloop(int x) throws GeneratorException{
+   public ArrayList<int[]> Get_Xth_Loop(int x) throws GeneratorException{
        if(x==2){
-       return this.get2loop();
+       return this.Get_Two_Nodes_Loop();
        }
    Generator generator=new Generator();
-       List<int[]> list=generator.generate(this.NodesAmount, x);
+       List<int[]> list=generator.generate(this.Nodes_Number, x);
        List<int[]> list1=generator.CloneBypermute(list);
        ArrayList<int[]> temp=new  ArrayList<>();
        
        for(int i=0;i<list1.size();i++){
-        if(IsLoop(list1.get(i)))
+        if(Is_Loop(list1.get(i)))
             temp.add(list1.get(i));
        }
         ArrayList<int[]> list2=generator.removeDuplicated(temp);
         return (ArrayList)list2;
    }
    
-   public int getNodesamount(){
-   return this.NodesAmount;
+   public int Get_Nodes_Number(){
+   return this.Nodes_Number;
    }
    
-   private ArrayList<int[]> get2loop(){
+   private ArrayList<int[]> Get_Two_Nodes_Loop(){
       Generator generator=new Generator();
-       List<int[]> list=generator.generate(this.NodesAmount, 2);
+       List<int[]> list=generator.generate(this.Nodes_Number, 2);
         ArrayList<int[]> list1=new ArrayList<>();
         
         for(int[] arr:list){
             int num1=arr[0];
             int num2=arr[1];
             
-            int tedad=SearchaNode(this.Nodes.get(num1),this.Nodes.get(num2).getDuplicated());
+            int tedad=Search_Node(this.Nodes.get(num1),this.Nodes.get(num2).getDuplicated());
        if(tedad>1){
        for(int i=0;i<tedad-1;i++)
            list1.add(arr);
@@ -98,23 +98,21 @@ public class Graph {
         return list1;
    }
    
-   public ArrayList<int[]> getWholeLoops() throws GeneratorException{
-   int KVL_Equtions_size=this.getUnknowns()-(this.NodesAmount-1);
+   public ArrayList<int[]> DFT_Get_Loops() throws GeneratorException{
+   int KVL_Equtions_size=this.Get_Unknown_Number()-(this.Nodes_Number-1);
    ArrayList<int[]> KVL_Equtions=new ArrayList<>();
 
    int counter=2;
    int ite=0;
    for(int i=0;i<KVL_Equtions_size;i++){
            
-           while(findlen(counter)<=i){
-              // System.out.println("size "+(getNloop(counter).size())+" ite: "+ite);
+           while(Xth_Loop_Length(counter)<=i){
+
                counter++;
                ite=0;
-             //System.out.println("counter: "+counter);
-           }   
-             //System.out.println("ive reched");
-            //System.out.println("added+ "+getNloop(counter).get(ite)+" with i= "+ite);
-   KVL_Equtions.add(getNloop(counter).get(ite));
+           }
+
+   KVL_Equtions.add(Get_Xth_Loop(counter).get(ite));
    ite++;
    }
       
@@ -122,37 +120,37 @@ public class Graph {
    
    }
    
-   private int findlen(int x) throws GeneratorException{
+   private int Xth_Loop_Length(int x) throws GeneratorException{
    int hold=0;
    while(x>1){
-      hold+=getNloop(x).size();
+      hold+=Get_Xth_Loop(x).size();
    x--;
    }
    return hold;
    }
    
-   private Integer SearchaNode(Node a,Map<Integer,Node> source){
+   private Integer Search_Node(Node a,Map<Integer,Node> source){
        Collection<Node> arr=source.values();
       for(Node node:arr){
         if(node.equals(a))
-            return getKeyFromValue(source,node);
+            return Search_For_Key(source,node);
       }
       return 0;
    }
    
-   private boolean IsLoop(int[] in){
+   private boolean Is_Loop(int[] in){
      boolean flag=true;
        for(int i=0;i<in.length-1;i++){
-       if(!Isconnected(Nodes.get(in[i]),Nodes.get(in[i+1])))
+       if(!Is_Connected(Nodes.get(in[i]),Nodes.get(in[i+1])))
            flag=false;
        }
-       if(!Isconnected(Nodes.get(in[0]),Nodes.get(in[in.length-1])))
+       if(!Is_Connected(Nodes.get(in[0]),Nodes.get(in[in.length-1])))
            flag=false;
        
        return flag;
    }
    
-   private boolean Isconnected(Node a,Node b){
+   private boolean Is_Connected(Node a,Node b){
        boolean flag=false;
    ArrayList<Node> Aconnectednodes=a.getconnectednodes();
     for(Node node:Aconnectednodes){
@@ -162,7 +160,7 @@ public class Graph {
     return flag;
    }
    
-   private Integer getKeyFromValue(Map<Integer,Node> hm, Node value) {
+   private Integer Search_For_Key(Map<Integer,Node> hm, Node value) {
             for (Integer o : hm.keySet()) {
               if (hm.get(o).equals(value)) {
                 return o;

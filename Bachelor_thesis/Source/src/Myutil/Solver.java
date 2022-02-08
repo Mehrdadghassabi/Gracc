@@ -15,15 +15,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 package Myutil;
 
 
-import ElectricalGate.Battery;
 import ElectricalGate.Resistor;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Graph.Branches;
+import Graph.Gracc;
 import Graph.Node;
 import Graph.Direction;
-import Graph.Branch;
 import Graph.Connection;
 import Graph.Graph;
 
@@ -33,16 +31,15 @@ import Graph.Graph;
  * @author Mehrdad Ghassabi
  */
 public final class Solver {
-    private Branches circuit;
+    private Gracc circuit;
     private  Matrix Mainmatrix;
     private  Matrix passivematrix;
     private Matrix Leftsidematrix;
 
 
-    public Solver(Branches circuit){
+    public Solver(Gracc circuit){
         this.circuit=circuit;
-        //this.Mainmatrix=main;
-        // this.Leftsidematrix=left;
+
         try {
             this.Mainmatrix=getMainMatrix(circuit);
             this.Leftsidematrix=getLeftsidematrix(circuit);
@@ -58,14 +55,14 @@ public final class Solver {
         return mainreverse.multiply(Leftsidematrix);
     }
 
-    public Matrix getLeftsidematrix(Branches circuit) throws GeneratorException{
+    public Matrix getLeftsidematrix(Gracc circuit) throws GeneratorException{
         Graph graph=circuit.getGraph();
-        float[] arr=new float[graph.getUnknowns()];
+        float[] arr;
         float[] firstpart=getLeftsidematrixFirstpart(circuit);
         float[] secondpart=getLeftsidematrixSecondpart(circuit);
         arr=concatArr(firstpart,secondpart);
 
-        float[][] cons=new float[graph.getUnknowns()][1];
+        float[][] cons=new float[graph.Get_Unknown_Number()][1];
         for(int i=0;i<arr.length;i++){
             cons[i][0]=arr[i];
         }
@@ -73,9 +70,9 @@ public final class Solver {
         return new Matrix(cons);
     }
 
-    public float[] getLeftsidematrixFirstpart(Branches circuit) throws GeneratorException{
+    public float[] getLeftsidematrixFirstpart(Gracc circuit) throws GeneratorException{
         Graph graph=circuit.getGraph();
-        int nodesamount=graph.getNodesamount();
+        int nodesamount=graph.Get_Nodes_Number();
         float[] arr=new float[nodesamount-1];
         for(int i=0;i<arr.length;i++){
             arr[i]=0;
@@ -83,15 +80,13 @@ public final class Solver {
         return arr;
     }
 
-    public float[] getLeftsidematrixSecondpart(Branches circuit) throws GeneratorException{
+    public float[] getLeftsidematrixSecondpart(Gracc circuit) throws GeneratorException{
         Graph graph=circuit.getGraph();
-        int nodesamount=graph.getNodesamount();
-        float[] arr=new float[graph.getUnknowns()-nodesamount+1];
-        ArrayList<Battery> batterys;
-        ArrayList<Branch> myarr;
-        //System.out.println("arrrlen: "+arr.length);
+        int nodesamount=graph.Get_Nodes_Number();
+        float[] arr=new float[graph.Get_Unknown_Number()-nodesamount+1];
+
         for(int i=0;i<arr.length;i++){
-            //System.out.println(arr.length);
+
             arr[i]=-1*circuit.findVoltageofLoopN(i);
         }
         return arr;
@@ -111,9 +106,8 @@ public final class Solver {
         return re;
     }
 
-    public  Matrix getMainMatrix(Branches circuit) throws GeneratorException{
-        Graph graph=circuit.getGraph();
-        float[][] arr=new float[graph.getUnknowns()][graph.getUnknowns()];
+    public  Matrix getMainMatrix(Gracc circuit) throws GeneratorException{
+        float[][] arr;
         float[][] firstpart=getMainMatrixFirstpart(circuit);
         float[][] secondpart=getMainMatrixSecondpart(circuit);
         arr=concatArrs(firstpart,secondpart);
@@ -123,25 +117,25 @@ public final class Solver {
 
     public  float[][] concatArrs(float[][] first,float[][] second){
         Graph graph=circuit.getGraph();
-        int nodesamount=graph.getNodesamount();
-        float[][] re=new float[graph.getUnknowns()][graph.getUnknowns()];
+        int nodesamount=graph.Get_Nodes_Number();
+        float[][] re=new float[graph.Get_Unknown_Number()][graph.Get_Unknown_Number()];
         for(int i=0;i<nodesamount-1;i++)
-            for(int j=0;j<graph.getUnknowns();j++)
+            for(int j=0;j<graph.Get_Unknown_Number();j++)
                 re[i][j]=first[i][j];
 
-        for(int i=nodesamount-1;i<graph.getUnknowns();i++){
-            for(int j=0;j<graph.getUnknowns();j++){
+        for(int i=nodesamount-1;i<graph.Get_Unknown_Number();i++){
+            for(int j=0;j<graph.Get_Unknown_Number();j++){
                 re[i][j]=second[i-nodesamount+1][j];
             }}
 
         return re;
     }
 
-    public  float[][] getMainMatrixSecondpart(Branches circuit) throws GeneratorException{
+    public  float[][] getMainMatrixSecondpart(Gracc circuit) throws GeneratorException{
         Graph graph=circuit.getGraph();
-        int nodesamount=graph.getNodesamount();
+        int nodesamount=graph.Get_Nodes_Number();
 
-        float[][] re=new float[graph.getUnknowns()-(nodesamount-1)][graph.getUnknowns()];
+        float[][] re=new float[graph.Get_Unknown_Number()-(nodesamount-1)][graph.Get_Unknown_Number()];
         ArrayList<Direction> loop;
         for(int i=0;i<re.length;i++){
             loop=circuit.Loops.get(i);
@@ -163,11 +157,11 @@ public final class Solver {
         return counter;
     }
 
-    public float[][] getMainMatrixFirstpart(Branches circuit){
+    public float[][] getMainMatrixFirstpart(Gracc circuit){
         Graph graph=circuit.getGraph();
-        int nodesamount=graph.getNodesamount();
+        int nodesamount=graph.Get_Nodes_Number();
         ArrayList<Node> nodes=graph.GetNodes();
-        float[][] re=new float[nodesamount-1][graph.getUnknowns()];
+        float[][] re=new float[nodesamount-1][graph.Get_Unknown_Number()];
 
         for(int i=0;i<re.length;i++){
             for(int j=0;j<nodes.get(i).getConnectedBranch().size();j++){
