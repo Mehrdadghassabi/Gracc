@@ -12,14 +12,13 @@ Original file is located at
 import networkx as nx
 import numpy as np
 import pandas as pd
+from scipy import linalg
 
 # this function get the example circuit information
 # from .txt file by parsing it
 # 
-# returns an array which contains
-#   [Kirchoff graph edges attributes 
-#    Kirchoff graph adjacency matrix]
-def parsing_cicuit(circ):
+# returns kirchoff graph as the result
+def circuit_parser(circ):
      nodesnumber = 0
      edgesnumber = 0
      kgatt = {}
@@ -39,7 +38,7 @@ def parsing_cicuit(circ):
               # number of nodes & edges
               nodesnumber = arrint[0]
               edgesnumber = arrint[1]
-              adjacencymatrix = np.zeros([nodesnumber,nodesnumber], dtype=int)
+              kgam = np.zeros([nodesnumber,nodesnumber], dtype=int)
             else :
               # else it means that this line is an information about an edge
               # the origin and the destanation node
@@ -48,7 +47,7 @@ def parsing_cicuit(circ):
               ymat = arrint[1]
 
               Coord = (xmat,ymat)
-              adjacencymatrix[xmat][ymat] = 1
+              kgam[xmat][ymat] = 1
    
               att_of_edge = {}
               att_of_edge['resistor'] = arrint[2]
@@ -61,17 +60,10 @@ def parsing_cicuit(circ):
 
     
             i = i + 1
-     # return them as an array ! !!
-     circ = [adjacencymatrix,kgatt]
-     return circ
-
-# this function get kirchoff graph adjacency matrix
-# and simply return the kirchoff graph
-def get_kg(kgam,kgatt):
-    df = pd.DataFrame(kgam)
-    kg = nx.from_pandas_adjacency(df)
-    nx.set_edge_attributes(kg, kgatt)
-    return kg
+     df = pd.DataFrame(kgam)
+     kg = nx.from_pandas_adjacency(df)
+     nx.set_edge_attributes(kg, kgatt)
+     return kg
 
 # this function takes kirchoff graph & minimum spaning tree
 # and returns edges that eliminated 
@@ -123,34 +115,62 @@ def find_fundamental_cycles(gl) :
            continue
     return fcl
 
-def isreverse(org,dst,suggested_dir):
+def isnotreverse(org,dst,suggested_dir):
     return (suggested_dir[0] == org) and (suggested_dir[1] == dst)
 
-def get_b(kg):
+def get_A_coord(kg,org,dst):
+    edges = kg.edges()
+    i = 0 
+    for edge in kg.edges():
+        c1 = edge[0] == org and edge[1] == dst
+        c2 = edge[1] == org and edge[0] == dst
+        if c1 or c2 :
+           return i
+        i = i + 1
+
+def find_kg_edges_weights(kg):
     kgmst = nx.minimum_spanning_tree(kg)
     kgmstam = nx.to_numpy_array(kgmst).astype(int)
     kgam = nx.to_numpy_array(kg).astype(int)
     eled = Eliminated_Edges(kgam,kgmstam)
     gl = graph_list(kgmstam,eled)
     fcl = find_fundamental_cycles(gl)
-    b = np.zeros(kg.number_of_edges())
+    edge_number = kg.number_of_edges()
+    B = np.zeros([edge_number,1])
+    A = np.zeros([edge_number,edge_number])
     i = 0
     for cycle in fcl :
         volsum = 0
+        res = 0
         for edge in cycle :
             org = edge[0]
             dst = edge[1]
             sugdir = kg.get_edge_data(org,dst)['suggested_dir']
-            if isreverse(org,dst,sugdir) :
-               volsum = volsum + kg.get_edge_data(org,dst)['battery']
-            else :
+            if isnotreverse(org,dst,sugdir) :
                volsum = volsum - kg.get_edge_data(org,dst)['battery']
-        b[i]= volsum
+               res = -kg.get_edge_data(org,dst)['resistor']
+               cor = get_A_coord(kg,org,dst)
+               A[i][cor] = res
+            else :
+               volsum = volsum + kg.get_edge_data(org,dst)['battery']
+               res = +kg.get_edge_data(org,dst)['resistor']
+               cor = get_A_coord(kg,org,dst)
+               A[i][cor] = res
+        B[i][0]= volsum
         i = i + 1
-    # -----------------------------------------------------------
-    return b
+    for node in kg.nodes :
+        for nei in kg1.neighbors(node):
+            sugdir = kg.get_edge_data(node,nei)['suggested_dir']
+            inr = isnotreverse(node,nei,sugdir)
+            cor = get_A_coord(kg,node,nei)
+            if isnotreverse(node,nei,sugdir) :
+               A[i][cor] = -1
+            else :
+                 A[i][cor] = 1
+        i = i + 1
+        if i == kg1.number_of_edges():
+           break
+    return linalg.solve(A, B)
 
-circuit1 = parsing_cicuit('circuit1.txt')
-kg1 = get_kg(circuit1[0],circuit1[1])
-
-print(get_b(kg1))
+kg1 = circuit_parser('circuit1.txt')
+find_kg_edges_weights(kg1)
