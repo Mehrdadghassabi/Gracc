@@ -1,2 +1,2 @@
 - thanks to <a href=https://github.com/SpencerPark/IJava/>Ijava</a> now we can run java on jupyter
-- see <a href=https://www.youtube.com/watch?v=VHlSICjZRPs />this</a> for running
+- see https://www.youtube.com/watch?v=VHlSICjZRPs for installing ijava
