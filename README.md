@@ -6,4 +6,3 @@ analyzing them with graph theory algorithms
 
 # How to run this?
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Source/GRacC.ipynb)
-the simplest way is running on google colab
