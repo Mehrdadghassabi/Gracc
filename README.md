@@ -8,5 +8,5 @@ analyzing them with graph theory algorithms
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Source/GRacC.ipynb)
 
 # How to give Gracc a circuit as an input?
-the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
+- the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
 hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
