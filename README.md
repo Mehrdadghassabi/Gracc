@@ -10,3 +10,5 @@ analyzing them with graph theory algorithms
 # How to give Gracc a circuit as an input?
 - the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
 hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
+- consider <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit1.txt>
+circuit1</a> as an input
