@@ -12,3 +12,6 @@ analyzing them with graph theory algorithms
 hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
 - consider <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit1.txt>
 circuit1</a> as an input
+the first line tell us that this circuit have 4 node and 5 edge
+the next 5 line explain the edges detail for us
+-- for example ( x y z m n k ) means that node x and y are connected with
