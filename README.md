@@ -47,3 +47,8 @@ for example for the <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master
 circuit5</a> the solution is:
 
 ![image](https://user-images.githubusercontent.com/53050138/184504011-aa7d2716-6cae-4d13-bfcf-076be7483a6b.png)
+
+# Notes
+- gracc doesnt support RLC circuits yet :)
+- solving differential equations which is a difficult task itself is done thanks to <a href=https://github.com/WarrenWeckesser/odeintw>
+odeintw</a>
