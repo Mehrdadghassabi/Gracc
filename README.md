@@ -29,3 +29,21 @@ open the jupyter file and download your circuit by wget like that
 ![image](https://user-images.githubusercontent.com/53050138/184503786-c396c3e7-481c-4a29-bab3-6179c2ced02d.png)
 
 # How to see the solution of our circut?
+- run all the cell in the jupyter file
+- parse your text file to create the kirchoff graph by
+```
+kg5 = circuit_parser('circuit5.txt')
+```
+- plot your input to see your input by
+```
+plot_kirchoffgraph(kg5)
+```
+- analyze the input by
+```
+plot_kirchoffgraph_after_solving(kg5)
+```
+- then you will see the solution of your circuit
+for example for the <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit5.txt>
+circuit5</a> the solution is:
+
+![image](https://user-images.githubusercontent.com/53050138/184504011-aa7d2716-6cae-4d13-bfcf-076be7483a6b.png)
