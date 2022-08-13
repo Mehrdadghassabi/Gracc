@@ -12,7 +12,7 @@ hand drawn circuit detection</a> is still underdevelopment we use a text file to
 
 # How to give Gracc an input via text?
 - well we got to descript a circuit(kirchoff_graph) with a text file to do so </br>
-in the first line of the text write two number the first one is nodes_number and the second is edges_number
+in the first line of the text write two number the first one is nodes_number and the second is edges_number </br>
 in the next n lines (n = edges_number) youve got to explain the edges details </br>
 such that ( x y z a b c ) means that node x and y are </br>
 connected with a z_ohm resistor , a_volt battery , b_farad capacitor & c_henry inductor
