@@ -14,5 +14,5 @@ hand drawn circuit detection</a> is still underdevelopment we use a text file to
 circuit1</a> as an input
 the first line tell us that this circuit have 4 node and 5 edge
 the next 5 lines explain the edges detail for us...
-- ( x y z m n k ) means that node x and y are 
+- ( x y z m n k ) means that node x and y are </br>
 connected with a z_ohm resistor , m_volt battery , n_farad capacitor & k_henry inductor
