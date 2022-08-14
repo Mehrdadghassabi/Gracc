@@ -52,3 +52,4 @@ circuit5</a> the solution is:
 - gracc doesnt support RLC circuits yet :)
 - solving differential equations which is a difficult task itself is done thanks to <a href=https://github.com/WarrenWeckesser/odeintw>
 odeintw</a>
+- <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/Archive>archive</a> folder is just for making an archive delete it in your own fork
