@@ -17,7 +17,7 @@ in the next n lines (n = edges_number) you've got to explain the edges details <
 such that ( x y z a b c ) means that node x and y are </br>
 connected with a z_ohm resistor , a_volt battery , b_farad capacitor & c_henry inductor
 - for example consider <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit1.txt>
-circuit1</a> as an input
+circuit1</a> as an input,
 it is descripting this circuit
 
 ![Screenshot from 2022-08-12 04-55-20](https://user-images.githubusercontent.com/53050138/184503563-00484e0f-4007-424e-aec8-2a28b114a8c6.png)
