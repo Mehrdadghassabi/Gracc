@@ -11,9 +11,9 @@ the goal is to give a picture as an input but since <a href=https://github.com/e
 hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
 
 # How to give Gracc an input via text?
-- well we got to descript a circuit (kirchoff_graph) with a text file to do so </br>
-in the first line of the text write two number the first one is nodes_number and the second is edges_number </br>
-in the next n lines (n = edges_number) youve got to explain the edges details </br>
+- well, we got to descript a circuit (kirchoff_graph) with a text file to do so: </br>
+in the first line of the text write two number, the first one is nodes_number and the second is edges_number </br>
+in the next n lines (n = edges_number) you've got to explain the edges details </br>
 such that ( x y z a b c ) means that node x and y are </br>
 connected with a z_ohm resistor , a_volt battery , b_farad capacitor & c_henry inductor
 - for example consider <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit1.txt>
@@ -49,7 +49,7 @@ circuit5</a> the solution is:
 ![image](https://user-images.githubusercontent.com/53050138/184504011-aa7d2716-6cae-4d13-bfcf-076be7483a6b.png)
 
 # Notes
-- gracc doesnt support RLC circuits yet :)
+- gracc doesn't support RLC circuits yet :)
 - solving differential equations which is a difficult task itself is done thanks to <a href=https://github.com/WarrenWeckesser/odeintw>
 odeintw</a>
-- <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/Archive>archive</a> folder is just for making an archive delete it in your own fork
+- <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/Archive>archive</a> folder is just for making an archive, delete it in your own fork
