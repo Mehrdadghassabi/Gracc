@@ -1,0 +1,69 @@
+\contentsline {paragraph}{واژگان کلیدی}{شش}{section*.2}%
+\contentsline {chapter}{فهرست تصاویر}{ث}{section*.3}%
+\contentsline {chapter}{فهرست جداول}{ج}{section*.4}%
+\contentsline {chapter}{فهرست الگوریتم‌ها}{چ}{section*.4}%
+\contentsline {chapter}{\rl {فهرست برنامه‌ها}}{ح}{chapter*.5}%
+\contentsline {chapter}{\numberline {1}دیباچه}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}هدف پژوهش}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}کاربرد پژوهش}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}ساختار پایان نامه}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}مدار الکتریکی و منطق چیره بر آن}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}پیشگفتار}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}تاریخچه}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}قانون اهم}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}عناصر یک مدار}{4}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}مقاومت}{4}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}باتری}{5}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}خازن}{5}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}سلف}{5}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}قوانین کیرشهف}{6}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}قانون جریان کیرشهف}{6}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}قانون اختلاف پتانسیل کیرشهف}{6}{subsection.2.5.2}%
+\contentsline {chapter}{\numberline {3}نظریه گراف}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}مقدمه}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}محتوا (نام‌گذاری بر اساس روش تحقیق و مسأله مورد مطالعه)}{7}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}علت انتخاب روش}{7}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}تشریح کامل روش تحقیق}{7}{subsection.3.2.2}%
+\contentsline {chapter}{\numberline {4}نتایج}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}مقدمه}{10}{section.4.1}%
+\contentsline {section}{\numberline {4.2}محتوا}{10}{section.4.2}%
+\contentsline {section}{\numberline {4.3}اعتبارسنجی}{11}{section.4.3}%
+\contentsline {chapter}{\numberline {5}بحث و نتیجه‌گیری}{12}{chapter.5}%
+\contentsline {section}{\numberline {5.1}مقدمه}{12}{section.5.1}%
+\contentsline {section}{\numberline {5.2}محتوا}{13}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}جمع‌بندی}{13}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}نوآوری}{13}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}پیشنهادها}{14}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}محدودیت‌ها}{14}{subsection.5.2.4}%
+\contentsline {chapter}{مراجع}{15}{chapter*.9}%
+ \renewcommand \cftchappresnum {پیوست\nobreakspace {}}\setlength {\cftchapnumwidth }{\mylenapp }
+\contentsline {chapter}{\numberline {6}آشنایی سریع با برخی دستورات لاتک}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}بندها و زیرنویس‌ها}{17}{section.6.1}%
+\contentsline {section}{\numberline {6.2}فرمول‌های ریاضی}{18}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}یک زیربخش}{18}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.1}یک زیرزیربخش}{18}{subsubsection.6.2.1.1}%
+\contentsline {section}{\numberline {6.3}نوشته‌های فارسی و انگلیسی مخلوط}{19}{section.6.3}%
+\contentsline {section}{\numberline {6.4}افزودن تصویر به نوشته}{19}{section.6.4}%
+\contentsline {section}{\numberline {6.5}محیط‌های شمارش و نکات}{20}{section.6.5}%
+\contentsline {section}{\numberline {6.6}تعریف و قضیه}{20}{section.6.6}%
+\contentsline {section}{\numberline {6.7}چگونگی نوشتن و ارجاع به مراجع}{21}{section.6.7}%
+\contentsline {chapter}{\numberline {7}‌جدول، نمودار و الگوریتم در لاتک}{23}{chapter.7}%
+\contentsline {section}{\numberline {7.1}جدول}{23}{section.7.1}%
+\contentsline {section}{\numberline {7.2}معادلات ریاضی و ماتریس‌ها}{24}{section.7.2}%
+\contentsline {section}{\numberline {7.3}الگوریتم}{25}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}الگوریتم ساده با دستورهای فارسی}{25}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}الگوریتم پیچیده و تودرتو با دستورهای فارسی}{25}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}الگوریتم با دستورهای لاتین}{25}{subsection.7.3.3}%
+\contentsline {section}{\numberline {7.4}کد}{27}{section.7.4}%
+\contentsline {section}{\numberline {7.5}تصویر}{27}{section.7.5}%
+\contentsline {section}{\numberline {7.6}نمودار}{28}{section.7.6}%
+\contentsline {section}{\numberline {7.7}نحوه قرارگیری اشیای شناور}{28}{section.7.7}%
+\contentsline {chapter}{\numberline {8}مراجع، واژه‌نامه و حاشیه‌نویسی}{30}{chapter.8}%
+\contentsline {section}{\numberline {8.1}مراجع و نقل‌قول‌ها}{30}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1} مدیریت مراجع با \lr {Bib\LRE {\TeX }}}{31}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}سبک‌های مورد تأیید دانشگاه تهران}{32}{subsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.1.3}سبک‌های فارسی قابل استفاده در زی‌پرشین}{33}{subsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.1.4}ساختار فایل مراجع}{34}{subsection.8.1.4}%
+\contentsline {subsection}{\numberline {8.1.5}نحوه اجرای \lr {Bib\LRE {\TeX }}}{35}{subsection.8.1.5}%
+\contentsline {section}{\numberline {8.2}واژه‌نامه‌ها و فهرست اختصارات}{36}{section.8.2}%
+\contentsline {section}{\numberline {8.3}حاشیه‌نویسی در نسخه پیش‌نویس}{37}{section.8.3}%

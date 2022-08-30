@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: ./tex/chapter1.aux
+A level-1 auxiliary file: ./tex/chapter2.aux
+A level-1 auxiliary file: ./tex/chapter3.aux
+A level-1 auxiliary file: ./tex/chapter4.aux
+A level-1 auxiliary file: ./tex/chapter5.aux
+The style file: plain-fa.bst
+A level-1 auxiliary file: ./tex/appendix1.aux
+A level-1 auxiliary file: ./tex/appendix2.aux
+A level-1 auxiliary file: ./tex/appendix3.aux
+Database file #1: ./tex/MyReferences.bib
+-- plain-fa.bst version 0.9 (2015/05/09) 
+-- This is a BibTeX style for XePersian: http://www.parsilatex.com
+
+Done.
+You've used 14 entries,
+            2546 wiz_defined-function locations,
+            740 strings with 9150 characters,
+and the built_in function-call counts, 4300 in all, are:
+= -- 437
+> -- 160
+< -- 1
++ -- 64
+- -- 49
+* -- 238
+:= -- 678
+add.period$ -- 46
+call.type$ -- 14
+change.case$ -- 119
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 152
+empty$ -- 313
+format.name$ -- 49
+if$ -- 1002
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 111
+newline$ -- 111
+num.names$ -- 31
+pop$ -- 75
+preamble$ -- 1
+purify$ -- 24
+quote$ -- 0
+skip$ -- 119
+stack$ -- 0
+substring$ -- 161
+swap$ -- 21
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 4
+type$ -- 52
+warning$ -- 0
+while$ -- 37
+width$ -- 16
+write$ -- 186
