@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import random as rm
 import odeintw as ow
 
+# for drawing the circuit
 def str_on_edge(a,b,c,d):
     s = ''
     if not a == 0 :
@@ -140,9 +141,12 @@ def find_fundamental_cycles(gl) :
            continue
     return fcl
 
+# checking that suggested direction is proper or not
 def sugdir_is_same_with_given_dir(org,dst,suggested_dir):
     return (suggested_dir[0] == org) and (suggested_dir[1] == dst)
 
+# by having 2 connected node
+# find the index of the edge connecting them
 def get_edge_index(kg,org,dst):
     edges = kg.edges()
     i = 0 
@@ -153,6 +157,10 @@ def get_edge_index(kg,org,dst):
            return i
         i = i + 1
 
+# finding the current through each edge
+# by having the kirchoff graph
+#
+# for circuits which only contains resistors and batterys
 def find_kg_edges_weights_ord(kg):
     kgmst = nx.minimum_spanning_tree(kg)
     kgmstam = nx.to_numpy_array(kgmst).astype(int)
@@ -197,6 +205,10 @@ def find_kg_edges_weights_ord(kg):
            break
     return linalg.solve(A, B)
 
+# finding the current through each edge
+# by having the kirchoff graph
+#
+# for RC and RL circuits (first order systems)
 def find_kg_edges_weights_RC_and_RL(kg):
     kgmst = nx.minimum_spanning_tree(kg)
     kgmstam = nx.to_numpy_array(kgmst).astype(int)
@@ -285,7 +297,7 @@ def find_kg_edges_weights_RC_and_RL(kg):
         B1 = np.delete(B1, index1, 0)
     kwnv = []
     for n in range(len(a)):
-        edin = get_edge_index(kg3,a[n][0],a[n][1])
+        edin = get_edge_index(kg,a[n][0],a[n][1])
         row_to_append = A1[:, edin].tolist()
         kwnv.append(row_to_append)
         A1 = np.delete(A1,edin,1)
@@ -348,6 +360,9 @@ def find_kg_edges_weights_RC_and_RL(kg):
        # should not get here
        return None
 
+# rounding edges weight
+#
+# for drawing only
 def round_kg_edges_weights(edw):
     i = 0
     for ele in edw:
@@ -360,31 +375,8 @@ def round_kg_edges_weights(edw):
 def asys(a, t, c):
     return c.dot(a)
 
-# ploting dX/dt = A * X answers
-# input X0,A
-def solve_matrix_eq(a,x0,l):
-    # a = np.array([[-0.5]])
-    n = len(a)
-    t = np.linspace(0, 10, 201)
-
-    # x0 is the initial condition.
-    # x0 = np.array([[7.0]])
-    
-    sol = ow.odeintw(asys, x0, t, args=(a,))
-
-    plt.figure(1)
-    plt.clf()
-    colorlist = []
-    for i in range(n):
-        c = (rm.uniform(0, 1),rm.uniform(0, 1),rm.uniform(0, 1))
-        l = 'I[' + str(l[i]) + ']'
-        plt.plot(t, sol[:, 0, i], color = c, label=l)
-
-
-    plt.legend(loc='best')
-    plt.grid(True)
-    plt.show()
-
+# finding edges that its weight obeys a 
+# first order differential equation
 def find_variable_edge_index(answ):
     l = []
     count = 0
@@ -394,38 +386,70 @@ def find_variable_edge_index(answ):
         count = count + 1
     return l
 
+# by founding the edges weight that obeys 
+# differential equation we find other edges weight
 def find_other_edge_weight(l,ans):
     wt = []
     i = 0
     for a in ans:
         j = 0
         if not np.isnan(a[0]):
-           st = 'I' + str(i) + '= '
+           st = 'i' + str(i) + '= '
            for element in a:
                if j == 0 :
                   st = st  + str(element)
                else :
-                  st = st + ' + ' + str(element) + 'I' + str(l[j-1])
+                  st = st + ' + ' + str(element) + 'i' + str(l[j-1])
                j = j + 1
            wt.append(st)
         i = i + 1
             
     return wt
 
-def print_sug_dir(vals):
+# get suggestion direction
+#
+# for printing
+def sug_dir_for_printing(vals):
+    s = ''
     for val in vals :
-        s = '[' + str(val[0]) + ']' + '---->' + '[' + str(val[1]) + ']'
-        print(s)
+        s = s + '[' + str(val[0]) + ']' + '---->' + '[' + str(val[1]) + ']' + '\n'
+    return s
 
+# finding prepare position
+#
+# for printing something
+def pos_for_printing_sth(nodespos):
+    re = []
+    vls = list(nodespos.values())
+    minx = 0
+    miny = 0
+    for vl in vls:
+        re.append(list(vl))
+    for t in re :
+        if t[0]<minx :
+           minx = t[0]
+        if t[1]<minx :
+           miny = t[1] 
+    return (minx,miny)
+
+# ploting the unsolved circuit
+#
+# just for seeing the input
 def plot_kirchoffgraph(kg):
     pos = nx.spring_layout(kg)
     nx.draw(kg, pos, with_labels=True, node_color='#FF0000')
     edge_labels = nx.get_edge_attributes(kg,'whole')
+    for e in edge_labels :
+        edge_labels[e] = edge_labels[e] + ' I' + str(get_edge_index(kg,e[0],e[1]))
     nx.draw_networkx_edge_labels(kg, pos, edge_labels)
+    st = 'suggested_dir: ' + '\n' + sug_dir_for_printing(nx.get_edge_attributes(kg,'suggested_dir').values())
+    textpos = pos_for_printing_sth(pos)
+    plt.text(textpos[0]-0.5, textpos[1]-0.5, st)
     plt.show()
-    print('suggested_dir: ')
-    print_sug_dir(nx.get_edge_attributes(kg,'suggested_dir').values())
 
+# analyze the ordinary cicuits
+#
+# by ploting
 def plot_solution_of_ord_kirchoffgraph(kg):
     edw = find_kg_edges_weights_ord(kg)
     edw = round_kg_edges_weights(edw)
@@ -444,13 +468,36 @@ def plot_solution_of_ord_kirchoffgraph(kg):
     nx.draw_networkx_edge_labels(dkg, pos, edge_labels)
     plt.show()
 
+# analyze the linear cicuits
+#
+# by ploting
 def plot_solution_of_lin_kirchoffgraph(kg):
-    X,answ = find_kg_edges_weights_RC_and_RL(kg)
+    a,answ = find_kg_edges_weights_RC_and_RL(kg)
     l = find_variable_edge_index(answ)
-    Y = [[1]]
-    solve_matrix_eq(X,Y,l)
-    print(find_other_edge_weight(l,answ))
+    x0 = [[1]]
+    # x0 is the initial condition
+    n = len(a)
+    t = np.linspace(0, 10, 201)
+    sol = ow.odeintw(asys, x0, t, args=(a,))
+    
+    plt.figure(1)
+    plt.clf()
+    colorlist = []
+    st = find_other_edge_weight(l,answ)
+    s = ''
+    for elm in st :
+        s = s + elm + '\n'
+    plt.text(0, -1.5, s)
+    for i in range(n):
+        c = (rm.uniform(0, 1),rm.uniform(0, 1),rm.uniform(0, 1))
+        l = 'i[' + str(l[i]) + ']'
+        plt.plot(t, sol[:, 0, i], color = c, label=l)
 
+    plt.legend(loc='best')
+    plt.grid(True)
+    plt.show()
+
+# ploting the analysis :)
 def plot_kirchoffgraph_after_solving(kg):
     cirtyp = circuit_type(kg)
     if cirtyp == 'RC' or cirtyp == 'RL' :
@@ -459,8 +506,24 @@ def plot_kirchoffgraph_after_solving(kg):
          plot_solution_of_ord_kirchoffgraph(kg)
     else :
       # it should be RLC doesnt developed yet
-        print('RLC circuit analysis is underdevelopment')
+        print('RLC circuit analysis still is underdevelopment')
 
-kg5 = circuit_parser('circuit1.txt')
+kg1 = circuit_parser('circuit1.txt')
+plot_kirchoffgraph(kg1)
+plot_kirchoffgraph_after_solving(kg1)
+
+kg2 = circuit_parser('circuit2.txt')
+plot_kirchoffgraph(kg2)
+plot_kirchoffgraph_after_solving(kg2)
+
+kg3 = circuit_parser('circuit3.txt')
+plot_kirchoffgraph(kg3)
+plot_kirchoffgraph_after_solving(kg3)
+
+kg4 = circuit_parser('circuit4.txt')
+plot_kirchoffgraph(kg4)
+plot_kirchoffgraph_after_solving(kg4)
+
+kg5 = circuit_parser('circuit5.txt')
 plot_kirchoffgraph(kg5)
 plot_kirchoffgraph_after_solving(kg5)
