@@ -15,7 +15,7 @@ hand drawn circuit detection</a> is still underdevelopment we use a text file to
 in the first line of the text write two number, the first one is nodes_number and the second is edges_number </br>
 in the next n lines (n = edges_number) you've got to explain the edges details </br>
 such that ( x y z a b c ) means that node x and y are </br>
-connected with a z_ohm resistor , a_volt battery , b_farad capacitor & c_henry inductor
+connected with z_ohm resistor , a_volt battery , b_farad capacitor & c_henry inductor
 - for example consider <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit1.txt>
 circuit1</a> as an input,
 it is descripting this circuit
