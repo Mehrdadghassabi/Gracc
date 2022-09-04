@@ -1,7 +1,7 @@
 # What this repository is about?
 this repository is about modeling circuits as graphs and
 analyzing them with graph theory algorithms for more detail
-<a href=http://diposit.ub.edu/dspace/bitstream/2445/170548/1/170548.pdf>read this article</a>
+<a href=http://diposit.ub.edu/dspace/bitstream/2445/170548/1/170548.pdf>read this article</a> <\br>
 ,or if you know persian see <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Docs/main/main.pdf>this</a>
 
 # How to solve an Electrical circuit with run Gracc?
