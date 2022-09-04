@@ -29,8 +29,8 @@ circuit5</a> the solution is: </br>
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Gracc.ipynb)
 
 # Comming soon...
-the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
-hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
+the next goal is to give a picture as an input see <a href=https://github.com/estineali/Hand-Drawn-Circuits>
+this</a> then you can use Gracc in your online exam :-)
 
 # Notes
 - gracc doesn't support RLC circuits yet :)
