@@ -23,6 +23,7 @@ if you use jupyter, download your circuit by wget like that
 ```
 for example for the <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/circuits/circuit5.txt>
 circuit5</a> the solution is: </br>
+</br>
 ![image](https://user-images.githubusercontent.com/53050138/184504011-aa7d2716-6cae-4d13-bfcf-076be7483a6b.png)
 
 - its wise to run it in google colab instead of your local machine to do so click in the icon </br>
