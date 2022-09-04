@@ -9,11 +9,10 @@ or if you know persian its better to take look at <a href=https://github.com/Meh
 ```
     pip install Gracc
 ```
-- descripe your circuit with a text! to do so see <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/circuits/README.md>this</a>.
+- descripe your circuit as a text! to do so see <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/circuits/README.md>this</a>.
 after descripting your circuit as a text locate it <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/circuits>
 Here</a>
-if you use jupyter, download your circuit by wget like that
-![image](https://user-images.githubusercontent.com/53050138/184503786-c396c3e7-481c-4a29-bab3-6179c2ced02d.png)
+
 - run and plot it with:
 ```
     import Gracc as grc
