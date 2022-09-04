@@ -1,20 +1,24 @@
 # What this repository is about?
 this repository is about modeling circuits as graphs and
 analyzing them with graph theory algorithms for more detail
-<a href=http://diposit.ub.edu/dspace/bitstream/2445/170548/1/170548.pdf>read this article</a> </br>
-,or if you know persian see <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Docs/main/main.pdf>this</a>
+<a href=http://diposit.ub.edu/dspace/bitstream/2445/170548/1/170548.pdf>read this article</a>, </br>
+or if you know persian its better to take look at <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Docs/main/main.pdf>this</a>.
 
-# How to solve an Electrical circuit with run Gracc?
+# How to solve an Electrical circuit with Gracc?
 - install Gracc with
 ```
     pip install Gracc
 ```
-
+- descripe your circuit with a text! dont worry in the following paragraph I would tell you how...
+- run and plot it with:
+```
+    import Gracc as grc
+    kg6 = grc.circuit_parser('yourdescriptedcircuit.txt')
+    grc.plot_kirchoffgraph(kg6)
+    grc.plot_kirchoffgraph_after_solving(kg6)
+```
+- its wise to run it in google colab instead of your local machine to do so click in the icon
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Gracc.ipynb)
-
-# How to give Gracc a circuit as an input?
-the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
-hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
 
 # How to give Gracc an input via text?
 - well, we got to descript a circuit (kirchoff_graph) with a text file to do so: </br>
@@ -53,6 +57,10 @@ for example for the <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master
 circuit5</a> the solution is:
 
 ![image](https://user-images.githubusercontent.com/53050138/184504011-aa7d2716-6cae-4d13-bfcf-076be7483a6b.png)
+
+# Comming soon...
+the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
+hand drawn circuit detection</a> is still underdevelopment we use a text file to do so :-)
 
 # Notes
 - gracc doesn't support RLC circuits yet :)
