@@ -4,7 +4,7 @@ analyzing them with graph theory algorithms for more detail
 <a href=http://diposit.ub.edu/dspace/bitstream/2445/170548/1/170548.pdf>read this article</a>, </br>
 or if you know persian its better to take look at <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Docs/main/main.pdf>this</a>.
 
-# How to solve an Electrical circuit with Gracc?
+## How to solve an Electrical circuit with Gracc?
 - install Gracc with
 ```
     pip install Gracc
