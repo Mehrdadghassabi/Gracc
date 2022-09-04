@@ -11,7 +11,7 @@ or if you know persian its better to take look at <a href=https://github.com/Meh
 ```
 - descripe your circuit as a text! to do so see <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/circuits/README.md>this</a>.
 after descripting your circuit as a text locate it <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/circuits>
-Here</a>
+here</a>
 
 - run and plot it with:
 ```
@@ -29,8 +29,8 @@ circuit5</a> the solution is: </br>
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Gracc.ipynb)
 
 # Comming soon...
-the next goal is to give a picture as an input see <a href=https://github.com/estineali/Hand-Drawn-Circuits>
-this</a> then you can use Gracc in your online exam :-)
+the next goal is to give a picture as an input see <a href=https://github.com/Mehrdadghassabi/Hand-Drawn-Circuits>
+this</a> great repository if we do so then you can use Gracc in your online exam :-)
 
 # Notes
 - gracc doesn't support RLC circuits yet :)
