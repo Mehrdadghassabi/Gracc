@@ -1,0 +1,23 @@
+\besmPage
+\titlePage
+\davaranPage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+    \taghdimPage
+    \ghadrdaniPage
+
+\abstractPage
+% شروع درج فهرست‌ها
+\newpage\cleardoublepage
+\pagenumbering{harfi} % آ، ب، ...
+\tableofcontents \clearpage
+% بررسی حالت پیش‌نویس برای بقیه فهرست‌ها
+\ifoptiondraft{
+    \listoftodos
+}{%
+    \listoffigures \clearpage
+    \addcontentsline{toc}{chapter}{\listalgorithmname}
+    \listofalgorithms \clearpage
+    \addcontentsline{toc}{chapter}{\lstlistlistingname}
+    \printacronyms
+} % end ifoptiondraft
