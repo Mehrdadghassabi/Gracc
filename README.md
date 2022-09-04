@@ -22,7 +22,7 @@ it is descripting this circuit
 
 ![Screenshot from 2022-08-12 04-55-20](https://user-images.githubusercontent.com/53050138/184503563-00484e0f-4007-424e-aec8-2a28b114a8c6.png)
 
-- after descripting your circuit as a text locate it <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/Source/circuits>
+- after descripting your circuit as a text locate it <a href=https://github.com/Mehrdadghassabi/Gracc/tree/master/circuits>
 Here</a>
 open the jupyter file and download your circuit by wget like that
 
