@@ -4,7 +4,7 @@ analyzing them with graph theory algorithms for more detail
 <a href=http://diposit.ub.edu/dspace/bitstream/2445/170548/1/170548.pdf>read this article</a>
 
 # How to run this?
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Source/GRacC.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Mehrdadghassabi/Gracc/blob/master/Gracc.ipynb)
 
 # How to give Gracc a circuit as an input?
 the goal is to give a picture as an input but since <a href=https://github.com/estineali/Hand-Drawn-Circuits>
@@ -43,7 +43,7 @@ plot_kirchoffgraph(kg5)
 plot_kirchoffgraph_after_solving(kg5)
 ```
 - then you will see the solution of your circuit
-for example for the <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/Source/circuits/circuit5.txt>
+for example for the <a href=https://github.com/Mehrdadghassabi/Gracc/blob/master/circuits/circuit5.txt>
 circuit5</a> the solution is:
 
 ![image](https://user-images.githubusercontent.com/53050138/184504011-aa7d2716-6cae-4d13-bfcf-076be7483a6b.png)
