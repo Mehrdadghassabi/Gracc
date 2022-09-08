@@ -2,7 +2,7 @@
 \chapter{نظریه گراف}
 %\thispagestyle{empty} 
 \section{پیشگفتار} 
-نظریه گراف نقش مهمی را در بسیاری از علوم دیگر بازی میکند، بسیاری از مفاهیم پیچیده از علوم فیزیک و شیمی گرفته تا علوم کامپیوتر توسط نظریه گراف توصیف میشود.
+امروزه نظریه گراف و الگوریتم های آن نقش مهمی را در بسیاری از علوم بازی میکند، بسیاری از مفاهیم پیچیده از علوم فیزیک و شیمی گرفته تا علوم کامپیوتر توسط نظریه گراف توصیف میشود.
 در این فصل علاوه بر مرور مختصر بر مفاهیم گراف، به الگوریتم هایی که در یافتن پاسخ خودکار مدار به ما یاری می رسانند پرداخته میشود.
 
 \section{گراف}
@@ -52,17 +52,25 @@
 
 برای یافتن مجموعه دور های ساده موجود در گراف ابتدا نیاز به یافتن درخت پوشای کمینه
 \LTRfootnote{minimum spanning tree}
-گراف یاد شده داریم، برای اینکار الگوریتم های زیادی از جمله الگوریتم کراسکال و
+گراف یاد شده داریم، برای اینکار الگوریتم های زیادی از جمله الگوریتم کراسکال
 \LTRfootnote{kruskal}
-الگوریتم پریم
+و الگوریتم پریم
 \LTRfootnote{prim}
-طراحی شده است، در پروژه حاضر از کتابخانه
+که در قسمت های
+\ref{kruskal}
+و
+\ref{prim}
+آمده است
+طراحی شده اند، البته در پروژه حاضر از کتابخانه
 \LR{networkx}
 پایتون برای پیاده سازی استفاده شده است.
 
 میتوان اثبات کرد که اگر یکی از یال های حذف شده را به درخت پوشای کمینه بیفزایم 
 یک و تنها یک دور ساده ایجاد میشود که ما با الگوریتم
 \LR{DFS}
+که در قسمت
+\ref{dfs}
+آمده است
 \LTRfootnote{depth first search}
 آن دور را می یابیم
 ، سپس با افزودن تمامی یال ها به صورت تک به تک تمامی دور های ساده یافت میشود.
@@ -82,6 +90,10 @@
 با الگوریتم
 \lr{DFS}
 دور های مورد نظر را می یابیم.
+الگوریتم توضیح داده شده به صورت شبه کد در قسمت
+\ref{simpcyc}
+آمده است.
+\cite{Dorfler18}
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=5cm]{fig2}}
 	\caption{درخت پوشای کمینه شکل
@@ -95,32 +107,124 @@
 		\ref{fig:fig1} }
 	\label{fig:fig3}
 \end{figure}
-
-
-\subsection{شبه کد پیدا کردن دور های ساده گراف}
-روند توضیح داده شده به صورت شبه کد، در الگوریتم 
- \eqref{simpcyc}
-آمده است.
 \begin{algorithm}[ht]
 	\onehalfspacing
 	\caption{الگوریتم پیدا کردن مجموعه دور های ساده گراف} 
 	\label{simpcyc}
 	\begin{algorithmic}[1]
 		\REQUIRE
-		 گراف
+		\lr{graph}
 		\ENSURE
-		 مجموعه دور های ساده گراف
+		\lr{simple cycle entity}
 		\STATE 
-		درخت پوشای کمینه را پیدا کن.
+		\lr{create simple-cycles entity s = \{\}}
 		\STATE 
-		یال های حذف شده از گراف برای تشکیل درخت را در یک استک ذخیره کن.
+		\lr{mst = kruskal(graph)}
+		\STATE 
+		\lr{store in stack s = graph - mst}
 		\STATE
-		یکی از یال های استک یاد شده را پاپ کن و به درخت پوشای کمینه اضافه کن و یک گراف تشکیل بده.
+		\lr{store s.pop() in edge e}
 		\STATE
-		گراف یاد شده دارای یک دور است آن دور را پیدا کن و به محموعه دور های ساده اضافه کن.
+		\lr{create new graph g = mst + e}
 		\STATE
-		اگر استک یاد شده خالی است به برنامه پایان بده در غیر این صورت به مرحله سوم برگرد.
+		\lr{define cycle c = dfs(g)}
+		\STATE
+		\lr{add cycle c to entity s }
+		\STATE
+		\lr{if stack s terminate the program otherwise return to instruction number4 }
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[ht]
+	\onehalfspacing
+	\caption{الگوریتم کراسکال} 
+	\label{kruskal}
+	\begin{algorithmic}[1]
+		\REQUIRE
+		\lr{graph}
+		\ENSURE
+		\lr{minimum spaning tree}
+		\STATE
+	    \lr{A = \{\}}
+	    \STATE
+	    \lr{For each vertex v in graph:}
+	    \STATE
+	    \lr{MAKE-SET(v)}
+	    \STATE
+		\lr{For each edge (u, v) in graph ordered by increasing order by weight(u, v):}
+		\STATE
+	    \lr{if FIND-SET(u) != FIND-SET(v):}
+	    \STATE
+	    \lr{A = A union (u, v)}
+	    \STATE
+	    \lr{UNION(u, v)}
+	    \STATE
+	    \lr{return A} 
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[ht]
+	\onehalfspacing
+	\caption{الگوریتم پریم} 
+	\label{prim}
+	\begin{algorithmic}[1]
+		\REQUIRE
+		\lr{graph}
+		\ENSURE
+		\lr{minimum spaning tree}
+		\STATE
+		\lr{A = \{\}}
+		\STATE
+		\lr{U = \{ 1 \}}
+		\STATE
+		\lr{while (U != V)}
+		\STATE
+		\lr{let (u, v) be the lowest cost edge such that u in U and v in V - U:}
+		\STATE
+		\lr{T = T union (u, v)}
+		\STATE
+		\lr{U = U union v}
+				
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[ht]
+	\onehalfspacing
+	\caption{الگوریتم 
+	\lr{dfs}
+} 
+	\label{dfs}
+	\begin{algorithmic}[1]
+		\REQUIRE
+		\lr{graph}
+		\ENSURE
+		\lr{Stack S = \{\}}
+		\STATE
+		\lr{for each vertex u, set visited[u] = false}
+		\STATE
+		\lr{push v to S}
+		\STATE
+		\lr{while (S is not empty) do}
+		\STATE
+		\lr{u = S.pop()}
+		\STATE
+		\lr{while (S is not empty) do}
+		\STATE
+		\lr{if (not visited[u]) then}
+		\STATE
+		\lr{visited[u] := true}
+		\STATE
+		\lr{for each unvisited neighbour w of u}
+		\STATE
+		\lr{S.push(w)}
+		
 	\end{algorithmic}
 \end{algorithm}
 
 \section{جمع بندی}
+در این فصل به مفاهیم نظریه گراف پرداخته شد که در فصل بعدی نقش اصلی را در مدل کردن مدار های الکتریکی به شکل انتزاعی بازی میکنند؛همانطور که پیشتر اشاره شد برای به دست آوردن پاسخ مدار ما نیازمند پیدا کردن تمامی قوانین
+\lr{kvl}
+هستیم، با در نظر گرفتن مدار به صورت گراف این مسئله به شکل یافتن تمامی دور های ساده گراف
+در می آید که در الگوریتم
+\eqref{simpcyc}
+به آن پرداخته شده است.

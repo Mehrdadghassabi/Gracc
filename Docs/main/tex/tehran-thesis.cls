@@ -84,7 +84,7 @@
 \thispagestyle{empty}
 \hfill
 \begin{center}
-\includegraphics[width=10cm]{img/besm}
+\includegraphics[width=13cm]{img/besm}
 \end{center}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
